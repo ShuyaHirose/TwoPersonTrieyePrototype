@@ -11,7 +11,6 @@ public class TestManager : MonoBehaviour
     public GameObject Wall;
     //public GameObject Camera;
     private GameObject CopyCube;
-
     //行数
     [Header("Set row number of Sphere")]
     [Range(1, 10)]
@@ -176,13 +175,23 @@ public class TestManager : MonoBehaviour
             //カメラの位置を変更
             Vector3 tmp = GameObject.Find("OVRCameraRig").transform.position;
             GameObject.Find("OVRCameraRig").transform.position = new Vector3(Cam_x, Cam_y, - cam_len * 10);
-            //Instantiate(Camera, new Vector3(Cam_x, Cam_y, -cam_len * 10), Quaternion.identity);
+
             //壁の生成
             float Wall_z = 4 * sphere_dep * bet_len;
             Instantiate(Wall, new Vector3(Cam_x, Cam_y, Wall_z), Quaternion.Euler(-90, 0, 0));
         }
 
-        //オブジェクトの削除
+        //立体視と平面視の切り替え
+        if (OVRInput.GetDown(OVRInput.RawButton.X))
+        {
+            Sphere.layer = 0;
+        }
+        if (OVRInput.GetDown(OVRInput.RawButton.Y))
+        {
+            Sphere.layer = 3;
+        }
+
+        //オブジェクトの削除関数
         void delete_obj()
         {
             //初期化
@@ -193,7 +202,7 @@ public class TestManager : MonoBehaviour
                 Destroy(old_obj);
             }
         }
-        //大きさと座標をもとに球体を生成する
+        //大きさと座標をもとに球体を生成する関数
         void CreateCube(int x, int y, float z, float len, float scale)
         {
             CopyCube = Instantiate(Sphere, new Vector3(x * len, y * len, z * len), Quaternion.identity);
