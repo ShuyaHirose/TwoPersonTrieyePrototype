@@ -511,15 +511,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sphere: {fileID: 7624064349588967728, guid: c67d944dd4687bd498570d5b06ef1071, type: 3}
   Wall: {fileID: 4894573933177048365, guid: db0d569f7e251144081f3f082f0a3e99, type: 3}
-  row: 6
-  colum: 6
-  l_size: 6.42
-  n_size: 3.99
-  s_size: 2.26
-  sphere_len: 1
-  sphere_dep: 3.85
-  cam_len: 5.27
-  level: 1000
+  row: 3
+  colum: 4
+  l_size: 3
+  n_size: 2.5
+  s_size: 2
+  sphere_len: 11.25
+  sphere_dep: 3
+  cam_len: 8
+  level: 0
 --- !u!4 &1931022430
 Transform:
   m_ObjectHideFlags: 0

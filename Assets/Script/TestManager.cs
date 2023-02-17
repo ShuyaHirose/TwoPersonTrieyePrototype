@@ -13,36 +13,36 @@ public class TestManager : MonoBehaviour
     private GameObject CopyCube;
     //行数
     [Header("Set row number of Sphere")]
-    [Range(1, 10)]
-    public int row = 1;
+    [Range(1, 100)]
+    public int row = 3;
     //列数
     [Header("Set colum number of Sphere")]
-    [Range(1, 10)]
-    public int colum = 1;
+    [Range(1, 100)]
+    public int colum = 4;
     //球体(大)のサイズを設定
     [Header("Set size of Large Sphere")]
-    [Range(1, 10)]
+    [Range(1, 100)]
     public float l_size = 3;
     //球体(中)のサイズを設定
     [Header("Set size of Nomall Sphere")]
-    [Range(1, 10)]
+    [Range(1, 100)]
     public float n_size = 2;
     //球体(小)のサイズを設定
     [Header("Set size of Small Sphere")]
-    [Range(1, 10)]
+    [Range(1, 100)]
     public float s_size = 1;
     //球体間の距離を設定
     [Header("Set length between spheres")]
-    [Range(1, 10)]
-    public float sphere_len = 1;
+    [Range(1, 100)]
+    public float sphere_len = 11;
     //球体間の奥行きを設定
     [Header("Set Depth spheres")]
-    [Range(1, 10)]
-    public float sphere_dep = 1;
+    [Range(1, 100)]
+    public float sphere_dep = 3;
     //球体群とカメラの距離を設定
     [Header("Set length between cam and obj")]
-    [Range(1, 10)]
-    public float cam_len = 1;
+    [Range(1, 100)]
+    public float cam_len = 8;
     //難易度(球体間のばらつき度合い)を設定
     [Header("Set Challenge Level")]
     [Range(-30, 1000)]
@@ -70,8 +70,7 @@ public class TestManager : MonoBehaviour
             }
 
             //球体間の距離を設定
-            float ball_size = (float)l_size;
-            float bet_len = ball_size + sphere_len;
+            float bet_len = l_size + sphere_len;
 
             //各難易度設定をランダムに割り当て
             for (int i = start + 1; i <= 3; i++)
@@ -123,6 +122,7 @@ public class TestManager : MonoBehaviour
                 //奥行きをランダムに生成
                 float rng_len = Random.Range(1, 4);
                 float z = rng_len * sphere_dep;
+                //float z = rng_len * sphere_dep * bet_len;
 
                 //大きさをランダムに割り当て
                 int rng = 0;
@@ -177,7 +177,7 @@ public class TestManager : MonoBehaviour
             GameObject.Find("OVRCameraRig").transform.position = new Vector3(Cam_x, Cam_y, - cam_len * 10);
 
             //壁の生成
-            float Wall_z = 4 * sphere_dep * bet_len;
+            float Wall_z = 4 * sphere_dep;
             Instantiate(Wall, new Vector3(Cam_x, Cam_y, Wall_z), Quaternion.Euler(-90, 0, 0));
         }
 
@@ -205,7 +205,7 @@ public class TestManager : MonoBehaviour
         //大きさと座標をもとに球体を生成する関数
         void CreateCube(int x, int y, float z, float len, float scale)
         {
-            CopyCube = Instantiate(Sphere, new Vector3(x * len, y * len, z * len), Quaternion.identity);
+            CopyCube = Instantiate(Sphere, new Vector3(x * len, y * len, z), Quaternion.identity);
             CopyCube.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
