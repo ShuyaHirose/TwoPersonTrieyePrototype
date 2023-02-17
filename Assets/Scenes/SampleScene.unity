@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7a9a81d70535d41975b536d83f5724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cube: {fileID: 7624064349588967728, guid: c67d944dd4687bd498570d5b06ef1071, type: 3}
+  Sphere: {fileID: 7624064349588967728, guid: c67d944dd4687bd498570d5b06ef1071, type: 3}
   Wall: {fileID: 4894573933177048365, guid: db0d569f7e251144081f3f082f0a3e99, type: 3}
   row: 6
   colum: 6
